@@ -1,0 +1,33 @@
+<div class="container-fluid"> 
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div id="messages" style="height:{{chatWindowH}}px;" auto-scroll-to-bottom>
+            <div ng-repeat="i in chatStack"> 
+                <ng-include src="'views/chatbot.html'" ng-if="i.from" onload="message = i.message"></ng-include>
+                <ng-include src="'views/chatme.html'" ng-if="i.to" onload="message = i.message"></ng-include>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12 col-xs-12">
+            <textarea class="form-control" rows="3" ng-model="mymessage" placeholder="Message..."/> 
+        </div>
+        <div class="form-group col-md-12 col-xs-12">
+            <div class="form-inline col-md-3 col-xs-2">
+                <button class="btn btn-primary" ng-show="button1Show" ng-click="SendMsg('Tell me more.')">More</button>
+            </div>
+            <div class="form-inline col-md-4 col-xs-4">
+                <button class="btn btn-success" ng-show="button2Show" ng-click="SendMsg('That did help.')">Yes</button>
+                <button class="btn btn-danger" ng-show="button2Show" ng-click="SendMsg('That not help.')">No</button>
+            </div>
+            <div class="form-inline col-md-3 col-xs-3">
+                <button class="btn btn-danger" ng-show="button3Show" ng-click="SendMsg('What next?')">Next</button>
+            </div>
+            <div class="form-inline col-md-2 col-xs-1">
+                <button type="submit" class="btn btn-default" id="send" ng-click="SendMsg(mymessage)">Send</button>
+            </div>
+        </div>
+    </div>
+</div> 
+
